@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+
+  <meta description="Blackmail" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css" />
+  <link rel="stylesheet" href="../../../styles/reset.css" />
+  <link rel="stylesheet" href="./style.css" />
+
+  <script src="./index.js" defer></script>
+
+  <title>Blackmail App</title>
+</head>
+
+<body onload="get()">
+  <section class="main">
+    <div class="container">
+      <h1 class="main__title">Create a <span class="color-yellow">blackmail</span> message</h1>
+      <p class="main__text">You can use this input to create a message to blackmail someone.</p>
+      <div class="blackmail__container">
+        <input placeholder="Enter some text" name="text" id="text" oninput="save()" class="blackmail__input" />
+        <button class="blackmail__remove" onclick="remove()">Remove</button>
+      </div>
+      <section id="blackmail"></section>
+    </div>
+  </section>
+
+</body>
+
+</html>

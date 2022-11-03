@@ -1,0 +1,120 @@
+:root {
+    --primary-color: #fff;
+    --secondary-color: #ffd700;
+    --black-color: #000;
+}
+
+/*GENERAL*/
+body,
+html {
+    font-size: 62.5% !important;
+    scroll-behavior: smooth;
+    width: 100%;
+    overflow-x: hidden;
+    background-color: var(--primary-color);
+    font-family: "Open Sans", sans-serif;
+}
+
+p {
+    font-size: 1.5rem;
+}
+
+.main {
+    padding: 40px 0;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    max-width: 134rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 3rem;
+    flex-direction: column;
+}
+
+.color-yellow {
+    color: var(--secondary-color);
+}
+
+.main__title {
+    font-family: "Bebas Neue", sans-serif;
+    text-transform: uppercase;
+    font-size: 6rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.main__text {
+    margin-top: 1rem;
+    font-family: "Open Sans", sans-serif;
+    font-size: 2rem;
+    text-align: center;
+}
+
+/*Volontaire*/
+.volunteer__section {
+    display: flex;
+    flex-direction: column;
+    height: 40%;
+}
+
+.volunteer__container {
+    display: flex;
+    margin: 4rem auto;
+}
+
+.volunteer {
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+    font-size: 1.6rem;
+    width: 100%;
+    max-width: 200px;
+    padding: 1rem;
+    border: none;
+}
+
+.volunteer:focus-visible {
+    outline: 1px solid var(--secondary-color);
+}
+
+.volunteer__btn {
+    border: none;
+    background: var(--secondary-color);
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.volunteer__btn:hover {
+    color: var(--primary-color);
+    background: var(--black-color);
+}
+
+.list__container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.list__container ul {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+}
+
+.list__container li {
+    font-size: 2rem;
+}
+
+.choosen__volunteer {
+    font-size: 4rem;
+    font-weight: bold;
+}

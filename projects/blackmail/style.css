@@ -1,0 +1,135 @@
+:root {
+    --primary-color: #fff;
+    --secondary-color: #ffd700;
+    --black-color: #000;
+}
+
+#blackmail {
+    display: flex;
+    flex-direction: row;
+}
+
+.blackmail__font-1 {
+    font-size: 4rem;
+    font-weight: 300;
+}
+
+.blackmail__font-2 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.blackmail__font-3 {
+    font-size: 1.5rem;
+    font-weight: 100;
+}
+
+.blackmail__font-4 {
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+/*GENERAL*/
+body,
+html {
+    font-size: 62.5% !important;
+    scroll-behavior: smooth;
+    width: 100%;
+    overflow-x: hidden;
+    background-color: var(--primary-color);
+    font-family: "Open Sans", sans-serif;
+}
+
+p {
+    font-size: 1.5rem;
+}
+
+.main {
+    padding: 40px 0;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    max-width: 134rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 3rem;
+    flex-direction: column;
+}
+
+.color-yellow {
+    color: var(--secondary-color);
+}
+
+.main__title {
+    font-family: "Bebas Neue", sans-serif;
+    text-transform: uppercase;
+    font-size: 6rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.main__text {
+    margin-top: 1rem;
+    font-family: "Open Sans", sans-serif;
+    font-size: 2rem;
+    text-align: center;
+}
+
+/*Blackmail*/
+.blackmail__container {
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+    font-size: 2rem;
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 4rem auto 2rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.blackmail__space {
+    width: 2rem;
+}
+
+.blackmail__input {
+    border: 1px solid var(--black-color);
+    padding: 4px
+}
+
+.blackmail__input:focus-visible {
+    border-radius: 0;
+    outline: 1px solid var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+}
+
+.blackmail__remove {
+    background: var(--secondary-color);
+    border: none;
+    padding: 5px 16px;
+    cursor: pointer;
+}
+
+.blackmail__remove:hover {
+    background: var(--black-color);
+    color: var(--primary-color);
+}
+
+@media (max-width:424px) {
+    .blackmail__container {
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .main__title {
+        font-size: 4rem;
+    }
+}

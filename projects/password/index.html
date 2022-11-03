@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta description="Projet Password" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css" />
+  <link rel="stylesheet" href="../../styles/reset.css" />
+  <link rel="stylesheet" href="./master.css" />
+
+  <script type="text/javascript" src="./index.js" defer></script>
+
+  <title>Password Maker</title>
+</head>
+
+<body>
+  <section class="main">
+    <div class="container">
+      <h1 class="main__title">Create a <span class="color-yellow">secure</span> password</h1>
+      <p class="main__text">You can use this password generator to create a strong password.</p>
+
+      <div class="password__container">
+        <span id="password"></span>
+        <button class="password__copy"><img src="img/icon-copy.png">
+          <span class="password__copy-tooltip">
+            Copier
+          </span></button>
+      </div>
+      <div class="protection__container">
+        <span id="protection"></span>
+      </div>
+
+      <div class="password__options">
+        <div class="password__size">
+          <label>Password length : <span id="password__size-value"></span></label>
+          <input type="range" id="slider" class="slider" max="20" min="1" step="1" value="this.value">
+        </div>
+        <div class="password__number">
+          <input type="checkbox" id="checkbox" id="number" name="number">
+          <label for="number">Add number ?</label>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</body>
+
+</html>

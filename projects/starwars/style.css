@@ -1,0 +1,140 @@
+:root {
+    --primary-color: #fff;
+    --secondary-color: #ffd700;
+    --tertiary-color: #191919;
+    --black-color: #000;
+    --alert-color: red;
+    --sucess-color: green;
+}
+
+/*GENERAL*/
+body,
+html {
+    font-size: 62.5% !important;
+    scroll-behavior: smooth;
+    width: 100%;
+    overflow-x: hidden;
+    background-color: var(--primary-color);
+    font-family: "Open Sans", sans-serif;
+}
+
+p {
+    font-size: 1.5rem;
+}
+
+.main {
+    padding: 40px 0;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    max-width: 134rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 3rem;
+    flex-direction: column;
+}
+
+.color-yellow {
+    color: var(--secondary-color);
+}
+
+.main__title {
+    font-family: "Bebas Neue", sans-serif;
+    text-transform: uppercase;
+    font-size: 6rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.main__text {
+    margin-top: 1rem;
+    font-family: "Open Sans", sans-serif;
+    font-size: 2rem;
+    text-align: center;
+}
+
+/*BTN*/
+
+.btn__container {
+    display: flex;
+    margin: 0 auto;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn__container button {
+    color: var(--primary-color);
+    border: 1px solid var(--tertiary-color);
+    background-color: var(--tertiary-color);
+    font-family: "Bebas Neue", sans-serif;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    text-decoration: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.btn__container button:hover {
+    border-color: var(--black-color);
+    background-color: var(--black-color);
+}
+
+.btn__numbers {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn__numbers button {
+    width: 50px;
+}
+
+.characters {
+    margin-top: 4rem;
+}
+
+.characters__grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.characters__grid div {
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+    width: 200px;
+    padding: 16px;
+}
+
+.characters__grid div h2 {
+    font-size: 1.5rem;
+}
+
+.characters__grid div ul {
+    font-size: 1rem;
+    margin-top: 1rem;
+    list-style-type: circle;
+    padding-left: 12px;
+}
+
+.active {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+}
+
+@media (max-width:464px) {
+    .main__title {
+        font-size: 4rem;
+    }
+}
