@@ -1,22 +1,42 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8" />
 
-    <meta description="Pokemon" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <meta charset="utf-8" />
 
-    <link
-      rel="stylesheet"
-      href="https://necolas.github.io/normalize.css/latest/normalize.css"
-    />
-    <link rel="stylesheet" href="../../../styles/reset.css" />
-    <link rel="stylesheet" href="./style.css" />
+  <meta description="Pokemon" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <script src="./index.js" defer></script>
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css" />
+  <link rel="stylesheet" href="../../../styles/reset.css" />
+  <link rel="stylesheet" href="./style.css" />
 
-    <title>Pokemon</title>
-  </head>
+  <script src="./index.js" defer></script>
 
-  <body></body>
+  <title>Pokemon</title>
+</head>
+
+<body>
+  <section class="sidenav">
+    <div class="container">
+      <img src="img/pokemon-logo.png">
+      <h1 class="main__title">Browse a <span class="color-yellow">generation</span> of pokemon</h1>
+      <p class="main__text">You can use this input to select the generation of pokemon you want to display. You can
+        choose the language in wich the pokemon name are displayed.</p>
+
+      <div class="controller__container">
+        <label>Generation</label>
+        <input type="number" min="1" max="8" class="pokemon__generation">
+        <label>Language</label>
+        <input type="text">
+        <button type="submit" class="controller-btn">Choose</button>
+        <span class="controller__info"></span>
+      </div>
+    </div>
+  </section>
+  <section class="pokemon__container">
+  </section>
+
+</body>
+
 </html>
