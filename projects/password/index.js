@@ -1,45 +1,46 @@
+'use strict'
+
 const slider = document.getElementById("slider")
 const output = document.getElementById("password__size-value")
-output.innerHTML = slider.value
-
-slider.oninput = function (options) {
-    output.innerHTML = this.value
-    makePassword(options)
-}
-
 const checkbox = document.getElementById("checkbox")
 const password = document.getElementById("password")
 const protection = document.getElementById("protection")
 const passwordContainer = document.querySelector(".password__container")
 const protectionContainer = document.querySelector(".protection__container")
 
+/**Display password length */
+output.innerHTML = slider.value
+slider.oninput = function (options) {
+    output.innerHTML = this.value
+    makePassword(options)
+}
+
+/**Copy password to clipboard*/
 const passwordCopy = document.querySelector('.password__copy')
 passwordCopy.addEventListener('click', function () {
-    const copyText = password.textContent
-    navigator.clipboard.writeText(copyText).then(() => {
-        console.log("Copied to clipboard")
-    })
+    if (password.textContent.length > 0) {
+        navigator.clipboard.writeText(password.textContent).then(() => {
+            alert("Copied to clipboard")
+        })
+    }
 })
 
+/**Return a random number*/
 function random(nb) {
     return Math.floor(Math.random() * nb)
 }
 
+/**Return a random letter*/
 const letters = 'abcdefghijklmnopqrstuvwxyz'
-let randomLetters = ''
-let randomLettersOdd = ''
+let randomLetters = '', randomLettersOdd = ''
 
 function getLetter() {
     return randomLetters = letters[Math.floor(Math.random() * letters.length)]
 }
 
-let options = {
-    size: 10,
-    withNumbers: true
-}
-
+/**Create the password*/
 function makePassword(options) {
-    randomLetters = ""
+    randomLetters = ''
     options.size = slider.value
     options.withNumbers = checkbox.checked
 
@@ -48,7 +49,6 @@ function makePassword(options) {
         options.withNumbers = true
     }
     if (options.size < 8) {
-        console.log("Your password is less than 8 characters long, which is weak for a secure password.")
         passwordContainer.classList.add("alert-container")
         protectionContainer.classList.add("alert")
         passwordContainer.classList.remove("sucess-container")

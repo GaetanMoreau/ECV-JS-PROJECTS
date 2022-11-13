@@ -80,7 +80,8 @@ p {
     padding-top: 20px;
 }
 
-input {
+input,
+select {
     border: none;
     height: 32px;
 }

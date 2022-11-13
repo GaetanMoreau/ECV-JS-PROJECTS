@@ -16,14 +16,14 @@
   <title>Blackmail App</title>
 </head>
 
-<body onload="get()">
+<body>
   <section class="main">
     <div class="container">
       <h1 class="main__title">Create a <span class="color-yellow">blackmail</span> message</h1>
       <p class="main__text">You can use this input to create a message to blackmail someone.</p>
       <div class="blackmail__container">
-        <input placeholder="Enter some text" name="text" id="text" oninput="save()" class="blackmail__input" />
-        <button class="blackmail__remove" onclick="remove()">Remove</button>
+        <input placeholder="Enter some text" name="text" id="text" class="blackmail__input" />
+        <button class="blackmail__remove">Remove</button>
       </div>
       <section id="blackmail"></section>
     </div>

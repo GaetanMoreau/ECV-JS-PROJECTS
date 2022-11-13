@@ -13,26 +13,33 @@ console.log('*** Arrows ***');
 function bjr() {
   console.log('Bonjour !');
 }
+const bjr = () => console.log('Bonjour !');
 
 function plus10(x) {
   return x + 10;
 }
+const plus10 = x => x + 10;
 
 function addition(x, y) {
   return x + y;
 }
+const addition = (x, y) => x + y;
 
 function multiplex(x, y) {
   console.log('result', x * y);
   return x * y;
 }
-
+const multiplex = (x, y) => {
+  console.log('result', x * y);
+  return x * y;
+}
 function createPerson(nom, prenom) {
   return {
     nom: nom,
     prenom: prenom,
   };
 }
+const createPerson = (nom, prenom) => ({ nom, prenom });
 
 /**========================================================================
  *                           Destructure moi !
@@ -58,21 +65,26 @@ const years = [1978, 1986, 2011, 2018, 2021];
  * Simplifier les assignations suivantes
  */
 
-const name = movie.name;
-const released = movie.released;
-const studio = movie.studio;
+// const name = movie.name;
+// const released = movie.released;
+// const studio = movie.studio;
+const { name, released, studio } = movie;
 
-const nom = game.name;
-const date = game.released;
-const other = {
-  studio: game.studio,
-  genre: game.genre,
-  platforms: ['pc', 'mac'],
-};
+// const nom = game.name;
+// const date = game.released;
+// const other = {
+//   studio: game.studio,
+//   genre: game.genre,
+//   platforms: game.platforms,
+// };
 
-const firstYear = years[0];
-const secondYear = years[1];
-const otherYears = [years[2], years[3], years[4]];
+const { name: nom, released: date, ...other } = game;
+
+
+// const firstYear = years[0];
+// const secondYear = years[1];
+// const otherYears = [years[2], years[3], years[4]];
+const [firstYear, secondYear, ...otherYears] = years;
 
 /**========================================================================
  *                           Fuuu-sion !
@@ -98,16 +110,18 @@ const musicInfos = {
  * Simplifier les assignations suivantes
  */
 
-const allLs = l1.concat(l2).concat(l3).concat(l4);
+// const allLs = l1.concat(l2).concat(l3).concat(l4);
+const allLs = [...l1, ...l2, ...l3, ...l4]
 
-const paul = {
-  firstName: adminInfos.firstName,
-  familyName: adminInfos.firstName,
-  birthDate: adminInfos.firstName,
-  nationality: adminInfos.firstName,
-  bands: musicInfos.bands,
-  instruments: musicInfos.instruments,
-};
+// const paul = {
+//   firstName: adminInfos.firstName,
+//   familyName: adminInfos.firstName,
+//   birthDate: adminInfos.firstName,
+//   nationality: adminInfos.firstName,
+//   bands: musicInfos.bands,
+//   instruments: musicInfos.instruments,
+// };
+const paul = { ...adminInfos, ...musicInfos }
 
 /**========================================================================
  *                           All at once
@@ -118,20 +132,38 @@ const paul = {
  */
 
 function clone(personne, nbAnnees) {
+  if (!nbAnnees === undefined) {
+    nbAnnees = 1;
+  }
+
   console.log('Nom', personne.nom);
   console.log('Prénom', personne.prenom);
   console.log('Âge', personne.age);
   console.log('nbAnnees', nbAnnees);
-
-  if (!nbAnnees) {
-    nbAnnees = 1;
-  }
 
   const leClone = {
     nom: personne.nom,
     prenom: personne.prenom,
     age: personne.age + nbAnnees,
   };
+
+
+  return leClone;
+}
+
+function clone(personne, nbAnnees = 1) {
+  const { nom, prenom, age } = personne;
+
+  console.log('Nom', personne.nom);
+  console.log('Prénom', personne.prenom);
+  console.log('Âge', personne.age);
+  console.log('nbAnnees', nbAnnees);
+
+  const leClone = {
+    ...personne,
+    age: age + nbAnnees,
+  };
+
 
   return leClone;
 }
