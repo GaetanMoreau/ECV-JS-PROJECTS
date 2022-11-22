@@ -19,17 +19,23 @@ pokemonChoose.addEventListener('click', function () {
 })
 
 const url = `https://pokeapi.co/api/v2/generation/`
+
+/**
+ * [Romain] Tes deux fonctions getGeneration et getPokemonSprite sont exactement les mêmes
+ * et devraient s'appeler plutot getJson
+ */
 function getGeneration(url) {
     return fetch(url).then(resp => resp.json())
 }
 function getPokemonSprite(url) {
     return fetch(url).then(resp => resp.json())
 }
-
+// [Romain] La consigne demandait à ce que la fonction prenne des arguments. Ce n'est pas le cas ici.
 function generatePokemonList() {
     pokemonContainer.textContent = ''
     getGeneration(url + pokemonGeneration.value).then(data => {
         const promises = []
+        // [Romain] tu pourrais utiliser un .map() pour construire ton tableau de promesses
         for (let i = 0; i < data.pokemon_species.length; i++) {
             const url = data.pokemon_species[i].url
             promises.push(fetch(url).then((res) => res.json()))
@@ -40,6 +46,10 @@ function generatePokemonList() {
                 name: result.name,
                 names: result.names,
             })).sort((a, b) => a.id > b.id ? 1 : -1)
+            /**
+             * [Romain] Pour une raison bizarre,
+             * l'ordre a l'air bon ici, mais à l'affichage ce n'est pas toujours le cas
+             */
             pokemon.forEach(function (pokemon) {
                 const pokemonId = pokemon.id, pokemonLanguage = pokemon.names
                 let pokemonName = null, pokemomImage = null
@@ -62,6 +72,8 @@ function generatePokemonList() {
     controllerInfo.classList.add('sucess')
     controllerInfo.classList.remove('alert')
     controllerInfo.textContent = "Generation " + pokemonGeneration.value + " have been generated !"
+
+    // [Romain] La consigne demandait à renvoyer une liste. Or ta fonction ne renvoie rien.
 }
 
 function createPokemon(pokemonId, pokemonName, pokemomImage) {
@@ -85,5 +97,10 @@ function createPokemon(pokemonId, pokemonName, pokemomImage) {
 
     pokemonItem.append(pokemonDisplayInfo, pokemonDisplayImage, pokemonDisplayName)
     pokemonItem.classList.add('pokemon__card')
+    /**
+     * [Romain] En général on voudrait que createPokemon renvoie la <div> créée
+     * pour l'ajouter au DOM plus tard.
+     * Ça permet de pouvoir réutiliser cette fonction dans un autre contexte.
+     */
     pokemonContainer.append(pokemonItem)
 }
