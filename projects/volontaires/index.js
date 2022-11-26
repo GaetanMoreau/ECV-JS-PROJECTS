@@ -1,5 +1,6 @@
+'use strict'
 const inputVolunteer = document.querySelector('.volunteer')
-const submitVolunteer = document.querySelector('.volunteer__btn')
+const submitVolunteer = document.querySelector('#add')
 const volunteerList = document.querySelector('.volunteer__list')
 const chooseVolunteer = document.querySelector('.choosen__volunteer')
 const choose = document.querySelector('#choose')
@@ -28,9 +29,6 @@ function createItem(value) {
 
 /** Designate a volunteer*/
 choose.addEventListener('click', function () {
-    designateVolunteer()
-})
-function designateVolunteer() {
     const choosenVolunteer = volunteerPending[Math.floor(Math.random() * volunteerPending.length)]
     chooseVolunteer.textContent = choosenVolunteer
 
@@ -54,13 +52,12 @@ function designateVolunteer() {
             })
     }
     save()
-}
+})
 
 /** Delete the list of volunteers*/
 deleteVolunteers.addEventListener('click', function () {
     volunteers = [], volunteerPending = []
-    volunteerList.textContent = "", chooseVolunteer.textContent = ""
-    inputVolunteer.value = ""
+    volunteerList.textContent = "", chooseVolunteer.textContent = "", inputVolunteer.value = ""
     localStorage.removeItem('Volunteers list')
     localStorage.removeItem('personne')
 })
@@ -69,7 +66,6 @@ deleteVolunteers.addEventListener('click', function () {
 function save() {
     localStorage.setItem('Volunteers list', JSON.stringify(volunteerPending))
     localStorage.setItem('personne', JSON.stringify(personne))
-
 }
 
 /**Get the list from the local storage*/
@@ -93,6 +89,4 @@ function get() {
     }
 }
 
-window.addEventListener('load', () => {
-    get()
-})
+window.addEventListener('DOMContentLoaded', get())
