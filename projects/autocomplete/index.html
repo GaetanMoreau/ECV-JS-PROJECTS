@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8" />
 
-    <meta description="Projet Autocomplete" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <meta charset="utf-8" />
 
-    <link
-      rel="stylesheet"
-      href="https://necolas.github.io/normalize.css/latest/normalize.css"
-    />
-    <link rel="stylesheet" href="../../styles/reset.css" />
-    <link rel="stylesheet" href="./style.css" />
+  <meta description="Projet Autocomplete" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <script type="module" src="./index.js" defer></script>
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css" />
+  <link rel="stylesheet" href="../../styles/reset.css" />
+  <link rel="stylesheet" href="./style.css" />
 
-    <title>Autocomplete</title>
-  </head>
+  <script type="module" src="./index.js" defer></script>
 
-  <body></body>
+  <title>Autocomplete</title>
+</head>
+
+<body>
+  <section class="main">
+    <div class="container">
+      <h1 class="main__title">Parcourez l'api <span class="color-yellow">découpage administratif</span></h1>
+      <input type="text" id="inputField" class="main__input"
+        placeholder="Rechercher par communes, départements, régions">
+      <ul id="autocompleteList"></ul>
+      <div id="infoFromList"></div>
+    </div>
+  </section>
+</body>
+
 </html>
