@@ -17,7 +17,7 @@ let allCommunes = []
 let allDeparements = []
 let allRegions = []
 
-let infoList = document.getElementById("infoFromList");
+const infoList = document.getElementById("infoFromList");
 
 // Récupération des communes, départements, régions. Chaque url est parcouru est les données sont placé dans trois tableaux distincts
 // Puis ces tableaux sont push dans un tableau principal, ce qui permet de bien différent les communes, départements et régions
@@ -50,9 +50,9 @@ getData()
 // Ajoute un écouteur d'événement "input" pour écouter la saisie par l'utilisateur, 
 let inputField = document.getElementById("inputField");
 inputField.addEventListener("input", function (e) {
-    let inputValue = e.target.value;
+    const inputValue = e.target.value;
     // Création d'un nouveau tableau principal avec les sous-tableaux dont les éléments correspondent à la valeur dans l'input
-    let filteredData = allData.map(item => item.filter(subitem => subitem.toLowerCase().startsWith(inputValue.toLowerCase())));
+    const filteredData = allData.map(item => item.filter(subitem => subitem.toLowerCase().startsWith(inputValue.toLowerCase())));
     // Envoie de ce tableau dans la fonction updateAutocomplete
     updateAutocomplete(filteredData);
 });
@@ -64,7 +64,7 @@ function updateAutocomplete(data) {
         infoList.style.display = "none"
     }
     // Réinitialise la liste déroulante en supprimant tous les éléments existants
-    let autocompleteList = document.getElementById("autocompleteList");
+    const autocompleteList = document.getElementById("autocompleteList");
     while (autocompleteList.firstChild) {
         autocompleteList.removeChild(autocompleteList.firstChild);
     }
@@ -73,7 +73,7 @@ function updateAutocomplete(data) {
         // Dans chaque itération, "item" est un des sous-tableaux de "data"
         item.forEach(element => {
             // Crée un nouvel élément <li> pour chaque élément du tableau de données
-            let li = document.createElement("li");
+            const li = document.createElement("li");
             let current = '<span>' + element.substr(0, inputField.value.length) + '</span>'
             current += element.substr(inputField.value.length)
             li.innerHTML = current;
@@ -95,7 +95,7 @@ function updateAutocomplete(data) {
             li.addEventListener("click", function () {
                 inputField.value = element;
                 autocompleteList.textContent = ""
-                getDataFromList(element.replace(/[0-9]/g, ''))
+                getDataFromList(element.replace(/\d/g, ''))
             });
 
             // Ajoute l'élément <li> à la liste déroulante
@@ -116,8 +116,10 @@ function getDataFromList(element) {
 
     return Promise.all([choosenCommune, choosenDepartement, choosenRegion]).then(([communes, departements, regions]) => {
         communes.forEach(function (data) {
-            updateInfoList(data)
-            console.log(data)
+            const elementCorrect = element.substring(0, element.length - 1)
+            if (data.nom === elementCorrect) {
+                updateInfoList(data)
+            }
         })
         departements.forEach(function (data) {
             updateInfoList(data)
@@ -134,7 +136,7 @@ function getDataFromList(element) {
 function updateInfoList(data) {
     infoList.innerHTML = ""
     infoList.style.display = "flex"
-    let list = document.createElement("ul");
+    const list = document.createElement("ul");
 
     let content = '';
     Object.entries(data).forEach(([key, value]) => {
