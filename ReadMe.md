@@ -10,4 +10,4 @@ Projets optionnels :
 Projets obligatoires :
 - Starwars --> Terminé
 - Volontaires --> Terminé
-- Autocomplete --> En cours
+- Autocomplete --> Terminé
