@@ -40,14 +40,22 @@ function getData() {
             const regionsName = data.nom
             allRegions.push(regionsName)
         })
+        /**
+         * Je ne suis pas sur d'être fan de cette organisation.
+         * Tu aurais pu choisir de créer un seul tableau, quitte à créer des objets de type
+         * {nom: 'Bordeaux', type: 'Commune'}
+         * {nom: 'Nouvelle-Aquitaine', type: 'Région'}
+         */
         allData.push(allCommunes, allDeparements, allRegions)
     }).catch(e => {
         console.error('Oups...', e);
     });
 }
+
+// Charger toutes les données initialement dans ce cas n'est pas idéal (35000+ communes)
 getData()
 
-// Ajoute un écouteur d'événement "input" pour écouter la saisie par l'utilisateur, 
+// Ajoute un écouteur d'événement "input" pour écouter la saisie par l'utilisateur,
 let inputField = document.getElementById("inputField");
 inputField.addEventListener("input", function (e) {
     const inputValue = e.target.value;
@@ -69,6 +77,11 @@ function updateAutocomplete(data) {
         autocompleteList.removeChild(autocompleteList.firstChild);
     }
     // Ajoute les éléments filtrés à la liste déroulante
+
+    /**
+     * Vu le nombre d'éléments à afficher dans ton cas,
+     * ça vaut peut-être le coup de filtrer pour n'afficher que les 5 premiers de chaque type par ex.
+     */
     data.forEach((item, index) => {
         // Dans chaque itération, "item" est un des sous-tableaux de "data"
         item.forEach(element => {
@@ -79,6 +92,7 @@ function updateAutocomplete(data) {
             li.innerHTML = current;
 
             // Attribution des classes selon le sous-tableau
+            // Switch complètement inutile, ici if, else if, else suffit
             switch (true) {
                 case index === 0:
                     li.classList.add("communes")
@@ -114,6 +128,10 @@ function getDataFromList(element) {
     const choosenDepartement = getJson(urlDepartements + "?nom=" + element).catch(() => null);
     const choosenRegion = getJson(urlRegions + "?nom=" + element).catch(() => null);
 
+    /**
+     * Ici c'est bizarre, tu fetch des données pour potentiellement plusieurs
+     * communes, départements ou régions, alors qu'on ne peut cliquer que sur un seul élément à la fois.
+     */
     return Promise.all([choosenCommune, choosenDepartement, choosenRegion]).then(([communes, departements, regions]) => {
         communes.forEach(function (data) {
             const elementCorrect = element.substring(0, element.length - 1)

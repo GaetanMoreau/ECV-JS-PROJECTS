@@ -15,6 +15,10 @@ nbItems.forEach(function () {
     btn.setAttribute('id', i)
     btn.textContent = i
     btn.classList.add('btn__number')
+    /**
+     * tu peux utiliser l'argument de ta fonction pour récupérer l'item courant
+     * et éviter d'avoir à créer et maintenir la variable i
+     */
     i++
     btnContainer.append(btn)
 })
@@ -26,6 +30,9 @@ document.getElementById('all').addEventListener('click', function (e) {
     Promise.all(
         nbItems.map(id => `https://swapi.dev/api/people/${id}`).map(getJson),
     ).then(data => {
+      /**
+       * Ici tu pourrais écrire juste data.forEach(createCharacter)
+       */
         data.forEach(function (character) {
             createCharacter(character)
         })
@@ -37,6 +44,9 @@ document.querySelectorAll(".btn__number").forEach(function (button) {
     button.addEventListener('click', function (e) {
         changeColor(e)
         charactersContainer.textContent = ""
+        /**
+         * Ici tu pourrais écrire juste then(createCharacter)
+         */
         getJson(url + e.target.innerText).then(data => {
             createCharacter(data)
         })
@@ -48,6 +58,9 @@ document.getElementById('random').addEventListener("click", function (e) {
     charactersContainer.textContent = ""
     changeColor(e)
     const nb = Math.floor(Math.random() * 10) + 1
+    /**
+     * Ici tu pourrais écrire juste then(createCharacter)
+     */
     getJson(url + nb).then(data => {
         createCharacter(data)
     })
@@ -64,6 +77,11 @@ function createCharacter(character) {
     charactersMass.textContent = "Mass: " + character.mass
 
     const charactersFilmsList = document.createElement("ul")
+    /**
+     * Ça vaudrait peut-être le coup d'attendre les films de chaque personnage
+     * avant d'afficher les films, pour éviter l'affichage au fur et à mesure,
+     * qui peut paraitre bizarre.
+     */
     character.films.forEach(function (film) {
         getJson(film).then(data => {
             const charactersFilmItem = document.createElement("li")
@@ -71,6 +89,10 @@ function createCharacter(character) {
             charactersFilmsList.append(charactersFilmItem)
         })
     })
+    /**
+     * Si tu cliques vite sur 2 boutons différents,
+     * les persos vont se cumuler
+     */
     charactersContainer.append(charactersDiv)
     charactersDiv.append(charactersName, charactersHeight, charactersMass, charactersFilmsList)
 }

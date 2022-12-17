@@ -13,6 +13,7 @@ submitVolunteer.addEventListener('click', function () {
         volunteerList.textContent = ""
         volunteers.push(inputVolunteer.value)
         volunteerPending = [...volunteers]
+        // Tu peux écrire volunteerPending.forEach(createItem)
         volunteerPending.forEach(e => createItem(e))
         personne = { pending: volunteerPending, list: volunteers }
         save()
@@ -89,4 +90,11 @@ function get() {
     }
 }
 
+/**
+ * Ici tu n'attends pas vraiment DOMContentLoaded,
+ * il faudrait que tu écrives
+ * window.addEventListener('DOMContentLoaded', () => get())
+ * ou
+ * window.addEventListener('DOMContentLoaded', get)
+ */
 window.addEventListener('DOMContentLoaded', get())
